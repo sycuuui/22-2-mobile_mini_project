@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            margin: 0 auto;
+        }
+        #info-box{
+            margin-top: 100px;
+            margin-left: 20%;
+        }
+        .info{
+            width: 102px;
+            height: 60px;
+            background-color: #D9D9D9;
+            border-radius: 20px;
+        }
+        .in{
+            width: 360px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-bottom: 2px solid;
+        }
+        #saveBtn{
+            width: 170px;
+            height: 52px;
+            background-color: #D9D9D9;
+        }
+    </style>
+</head>
+<body>
+    <div id="info-box">
+        <form action="/user" method="post">
+            <div class="info">이름</div> <input class="in" type="text" name="name">
+            <br><br>
+            <div class="info">전화번호</div> <input class="in" type="text" name="tel">
+            <br><br>
+            <div class="info">호수</div> <input class="in" type="text" name="num">
+            <br><br>
+            <div class="info">비밀번호</div> <input class="in" type="text" name="pwd">
+            <br><br><br><br>
+            {% print(msg) %}
+            <br><br>
+            <input id="saveBtn" type="submit"value="저장"><br><br>
+        </form>
+    </div>
+</body>
+</html>
