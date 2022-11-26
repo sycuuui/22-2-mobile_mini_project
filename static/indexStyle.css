@@ -1,0 +1,14 @@
+#userBtn{
+    display: inline-block;
+    margin-top: 470px;
+    width: 380px;
+    height: 80px;
+    border-radius: 20px;
+}
+#driver-btn{
+    display: inline-block;
+    margin-left: 270px;
+    width: 380px;
+    height: 80px;
+    border-radius: 20px;
+}

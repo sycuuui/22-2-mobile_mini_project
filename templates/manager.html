@@ -5,19 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
-    <script src= "./static/mqttio3.js" type="text/javascript"></script>
+    <script src= "./static/mqttio.js" type="text/javascript"></script>
     <script>
         window.addEventListener("load", function () {
             var url = new String(document.location);
             ip = (url.split("//"))[1];
-            ip = (ip.split(":"))[0]; 
+            ip = (ip.split(":"))[0];
             document.getElementById("broker").value = ip
         });
+    </script>
+    <script>
+        
     </script>
     <title>Document</title>
 </head>
 <body>
-    <form action="/manager/userList" method="get">
+    <form action="/userList" method="get">
         <input id="saveButton" type="submit"value="사용자 리스트 보기"><br><br>
     </form>
     <input type="button" value="cctv 보기" onclick="location.href='http:/'+'/192.168.137.176:8081'">
@@ -30,7 +33,15 @@
         <input type="button" onclick="startDisconnect()" value="Disconnect">
     </form>
     <br><br>
-    <input type="button" value="잠금해제 버튼" onchange="publish('led',7.5)">
+    <form>
+    <input type="button" name="motor" value="잠금해제 버튼" onclick="publish('motor','7')">
+    </form>
+    <br><br>
+    <form id="subscribe-form">
+        <input type="button" onclick="subscribe('driver')" value="측정시작">
+        <input type="button" onclick="unsubscribe('driver')" value="측정중단">
+     </form>
     <div id="messages"></div>
+
 </body>
 </html>
