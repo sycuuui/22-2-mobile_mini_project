@@ -1,14 +1,15 @@
-#userBtn{
-    display: inline-block;
-    margin-top: 470px;
-    width: 380px;
-    height: 80px;
-    border-radius: 20px;
+*{
+    text-align: center;
 }
-#driver-btn{
-    display: inline-block;
-    margin-left: 270px;
+#userBtn{
+    margin-top: 4px;
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+    font-size: 20px;
+    margin-top: 70px;
     width: 380px;
     height: 80px;
     border-radius: 20px;
+    cursor: pointer;
 }

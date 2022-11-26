@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
+    <link href="../static/managerStyle.css" rel="stylesheet" type="text/css" />
     <script src= "./static/mqttio.js" type="text/javascript"></script>
     <script>
         window.addEventListener("load", function () {
@@ -14,34 +15,32 @@
             document.getElementById("broker").value = ip
         });
     </script>
-    <script>
-        
-    </script>
-    <title>Document</title>
+    <title>관리자 페이지</title>
 </head>
-<body>
+<body><br><br><br><br><br><br><br><br>
     <form action="/userList" method="get">
         <input id="saveButton" type="submit"value="사용자 리스트 보기"><br><br>
     </form>
-    <input type="button" value="cctv 보기" onclick="location.href='http:/'+'/192.168.137.176:8081'">
+    <input id="cctv" type="button" value="cctv 보기" onclick="location.href='http:/'+'/192.168.137.176:8081'">
     <br><br>
-    <form id="connection-form">
-        <b>브로커 IP:</b>
-        <input id="broker" type="text" name="broker" value=""><br>
-        <b>포트 번호 : 9001</b><br>
-        <input type="button" onclick="startConnect()" value="Connect">
-        <input type="button" onclick="startDisconnect()" value="Disconnect">
-    </form>
-    <br><br>
-    <form>
-    <input type="button" name="motor" value="잠금해제 버튼" onclick="publish('motor','7')">
-    </form>
-    <br><br>
-    <form id="subscribe-form">
-        <input type="button" onclick="subscribe('driver')" value="측정시작">
-        <input type="button" onclick="unsubscribe('driver')" value="측정중단">
-     </form>
-    <div id="messages"></div>
-
+    <div class="box">
+        <br><br>
+        <form id="connection-form">
+            <b>IP:</b>
+            <input id="broker" type="text" name="broker" value=""><br><br>
+            <input id="connect" type="button" onclick="startConnect()" value="Connect">
+            <input id="disconnect" type="button" onclick="startDisconnect()" value="Disconnect">
+        </form>
+        <br><br>
+        <form>
+        <input id="unlockBtn" type="button" name="motor" value="잠금해제 버튼" onclick="publish('motor','7')">
+        </form>
+        <br><br>
+        <form id="subscribe-form">
+            <input id="startSignal" type="button" onclick="subscribe('driver')" value="요청신호 시작">
+            <input id="stopSignal" type="button" onclick="unsubscribe('driver')" value="요청신호 중단">
+        </form><br><br>
+        <div id="messages"></div>
+    </div>
 </body>
 </html>

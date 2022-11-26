@@ -1,0 +1,17 @@
+    *{
+    text-align: center;
+    }
+    table{
+        margin-left: 620px;
+        padding-right: 10px;
+    }
+    td{
+        border-bottom: 2px solid black;
+    }
+    #btn{
+        background-color: black;
+        border-color: black;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }

@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="../static/userListStyle.css" rel="stylesheet" type="text/css" />
+    <script language='javascript'>
+         function rowDel(obj)
+         {
+             var tr = obj.parentNode.parentNode;
+             tr.parentNode.removeChild(tr);
+         }
+        </script>
+    <title>사용자 리스트</title>
 </head>
 <body>
     {% print(msg) %}
     <table>
         <thead>
-            <tr>이름</tr><tr>전화번호</tr><tr>호수</tr><tr>비밀번호</tr>
+            <tr><td>이름 ( 전화번호 )</td><td>호수</td><td>비밀번호</td></tr>
         </thead>
         <tbody>
             {% for num in dict.keys(): %}
@@ -18,6 +26,7 @@
                 <td>{% print(name) %}</td>
                 <td>{% print(num) %}</td>
                 <td>{% print(dict[num]) %}</td>
+                <td><input type="button" id="btn" value="회원정보 삭제"onclick='javascript:rowDel(this);'></td>
             </tr>
             {% endfor %}
         </tbody>

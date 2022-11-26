@@ -1,19 +1,19 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/user')
 def index():
     return render_template('index.html')
 
-@app.route('/manager/')
+@app.route('/')
 def manager():
     return render_template('manager.html')
 
 @app.route('/us/')
 def us():
     return render_template('user.html')
-    
-@app.route('/user/',methods=['POST'])
+
+@app.route('/userInfo/',methods=['POST'])
 def user():
     name= request.form['name']
     tel = request.form['tel']
@@ -28,14 +28,14 @@ def user():
         file.write(data)
         file.close()
         file=open('./data/pwd.txt','a')
-        pwdData = "%s,%s\n"%(numData,pwdData)
+        pwdData = "%s,%s\n"%(num,pwd)
         file.write(pwdData)
         file.close()
         msg='정보가 저장 되었습니다'
-    
+
     return render_template('user.html',msg=msg)
 
-@app.route('/manager/userList',methods=['GET'])
+@app.route('/userList',methods=['GET'])
 def userInfo():
     name = request.args.get('name')
     tel = request.args.get('tel')
@@ -59,4 +59,4 @@ def userInfo():
     return render_template('userList.html',name=name,dict=dict)
 
 if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=8080, debug=True) 
+        app.run(host='0.0.0.0', port=8080, debug=True)

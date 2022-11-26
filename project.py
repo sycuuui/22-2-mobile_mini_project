@@ -121,10 +121,12 @@ def getIlluminance():
         sendCmd(cs, mosi, clk, ((0<<1)|0x0d)<<4)
         return int(readData(miso, clk))
 
-mcpValue=getIlluminance()
 
+
+controlMotor(3.0)
 while True :
         distance = measureDistance(trig, echo)
+        mcpValue=getIlluminance()
         print(mcpValue)
         if(distance<=5):
                 #print("택배상자가 들어왔습니다")
@@ -133,7 +135,6 @@ while True :
         else:
                 ledOnOff(led,ledOff)
                 ledOnOff(empty,ledOn)
-        #조도 센서가 어두우면 pwm.ChangeDutyCycle(3.0)으로 하기 위에꺼 없애고
         btnStatus1 = GPIO.input(button1)
         btnStatus2 = GPIO.input(button2)
         btnStatus3 = GPIO.input(button3)
@@ -149,23 +150,21 @@ while True :
                 print(3)
         #elif(btnStatus4==1):
                 #pwdArray.append(4)
-                #print(4)       
+                #print(4)
         if(len(pwdArray) == 4): #배열의 길이가 4일때
                 pwd=changeStr(pwdArray) #배열을 비교하기 위해서 문자열로 바꿈
                 if(str(userPwd)!=pwd): #사용자의 비밀번호와 입력받은 비밀번호가 다른 경우
                         print(changeStr(pwdArray))
                         pwdArray.clear() #배열 초기화
-                        errorCount = errorCount +1 
-                        print("다시 입력하세요") 
-                else: 
+                        errorCount = errorCount +1
+                        print("다시 입력하세요")
+                else:
                         controlMotor(7.5) #비밀번호가 맞으t면 90도로 설정
-                        time.sleep(1.0)
                         print(changeStr(pwdArray))
                         ledOnOff(error,ledOff)
-                        break #조도 이상으로 잠시 해놓기
                 if(errorCount%3==0): #errorCount가 3번 연속으로 틀린다면 빨간색 LED켜짐(비밀번호를 제대로 입력 받을 때까지 켜놓음)
                                 ledOnOff(error,ledOn)
 
         if(mcpValue<=500): # 조도 값이 500이하이면 모터로 잠금
-                time.sleep(2.0)
-                controlMotor(3.0)
+                 time.sleep(2.0)
+                 controlMotor(3.0)
