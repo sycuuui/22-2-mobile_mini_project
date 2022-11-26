@@ -48,9 +48,14 @@ def userInfo():
         return render_template('userList.html',msg='저장된 정보가 없습니다')
     else:
         for aline in file.readlines():
-            list = aline.split('/')
-            name=list[0]
+           list = aline.split('/')
+            nameInfo=list[0]
+            nameList=nameInfo.split(',')
+            name=nameList[0]
+            tel=nameList[1]
+            nameDict[name]=tel
             info=list[1].strip()
+            nameDict[name]=
             infolist = info.split(',')
             num=infolist[0]
             pwd=infolist[1]
