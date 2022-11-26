@@ -4,30 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="../static/userListStyle.css" rel="stylesheet" type="text/css" />
+
+    <title>사용자 리스트</title>
 </head>
 <body>
     {% print(msg) %}
     <table>
         <thead>
-            <tr>이름</tr><tr>전화번호</tr>
-        </thead>
-        <tbody>
-            {% for name in nameDict.keys(): %}
-            <tr>
-                <td>{% print(name) %}</td>
-                <td>{% print(nameDict[name]) %}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <table>
-        <thead>
-            <tr>호수</tr><tr>비밀번호</tr>
+            <tr><td>이름 ( 전화번호 )</td><td>호수</td><td>비밀번호</td></tr>
         </thead>
         <tbody>
             {% for num in dict.keys(): %}
             <tr>
+                <td>{% print(name) %}</td>
                 <td>{% print(num) %}</td>
                 <td>{% print(dict[num]) %}</td>
             </tr>
